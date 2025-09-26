@@ -22,4 +22,30 @@ class LoanTracker {
     public double payment(){
         return payment;
     }
+
+    public double getTotalPayments(){
+        return totalPayments;
+    }
+
+    public void setLoan(){
+        this.loan = loan;
+    }
+
+    public void setAmount(){
+        this.amount = amount;
+    }
+
+    public void setPayment(){
+        this.payment = payment;
+    }
+
+    public void setTotalPayments(){
+        this.totalPayments = totalPayments;
+    }
+
+    public void projection(double amount, double payment, double totalPayments){
+        totalPayments = amount/payment;
+        System.out.println("You have " + totalPayments + " payments remaining.");
+    }
+
 }
