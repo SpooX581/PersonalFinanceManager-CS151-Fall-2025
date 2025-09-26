@@ -22,13 +22,4 @@ class LoanTracker {
     public double payment(){
         return payment;
     }
-
-    public double totalPayments(){
-        return totalPayments;
-    }
-
-    public void projection(double amount, double payment, double totalPayments) {
-        totalPayments = amount/payment;
-        System.out.println("You have " + totalPayments + " remaining.");
-    }
 }
