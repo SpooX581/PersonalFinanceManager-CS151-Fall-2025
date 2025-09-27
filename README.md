@@ -4,8 +4,8 @@ A Java-based application to help users manage their personal finances, track exp
 
 ## Contributions
 
-Heather: CreditCard
-Will: FinanceManager
-Kennedy: LoanTracker
-Chyna: BankAccount
-Everyone: User
+-Heather: CreditCard
+-Will: FinanceManager
+-Kennedy: LoanTracker
+-Chyna: BankAccount
+-Everyone: User
