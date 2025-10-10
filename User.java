@@ -1,4 +1,4 @@
-import java.util.Scanner;
+
 
 public class User {
     private String fullName;
@@ -56,17 +56,5 @@ public class User {
     public void setBankAccounts(int bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to our Personal Finance Manager!");
-        System.out.println("What is your full name? Please enter: ");
-        String fullName = scanner.nextLine();
-        System.out.println("Now, please create a username: ");
-        String username = scanner.nextLine();
-        System.out.println("Please create your password: ");
-        String password = scanner.nextLine();
-        System.out.println("What is your date of birth? Please enter in MM/DD/YYYY format.");
-        String dateOfBirth = scanner.nextLine();
-        System.out.println("Account creation successful " + fullName + "! Remember to keep your information safe.");
-    }
+
 }
