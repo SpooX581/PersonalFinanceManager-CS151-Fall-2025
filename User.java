@@ -1,5 +1,3 @@
-
-
 public class User {
     private String fullName;
     private String username;
@@ -9,7 +7,7 @@ public class User {
     private int creditCards;
     private int bankAccounts;
 
-    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts) {
+    public User () {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
