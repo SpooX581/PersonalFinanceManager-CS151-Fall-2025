@@ -73,18 +73,19 @@ public class Main {
         // finance manager system menu
         System.out.println("Welcome back, " + fullName + "!");
         System.out.println("Please type the option you would like to access: ");
-        System.out.println("User Information");
-        System.out.println("Bank Account");
-        System.out.println("Credit Card");
-        System.out.println("Finance Manager");
-        System.out.println("Loan Tracker");
+        System.out.println("1. User Information");
+        System.out.println("2. Bank Account");
+        System.out.println("3. Credit Card");
+        System.out.println("4. Finance Manager");
+        System.out.println("5. Loan Tracker");
+        System.out.println("6. Exit");
 
         String response = scanner.nextLine();
-        if (response.equals("User Information")) {
+        if (response.equals("1") ||response.equals("User Information")) {
 
-        } else if (response.equals("Bank Account")) {
+        } else if (response.equals("2") || response.equals("Bank Account")) {
             
-        } else if (response.equals("Credit Card")) {
+        } else if (response.equals("3") || response.equals("Credit Card")) {
             CreditCard creditCard = new CreditCard();
 
             System.out.println("What credit card company do you have?");
@@ -99,13 +100,17 @@ public class Main {
             double currentBalance = scanner.nextDouble();
             creditCard.setStatementBalance(currentBalance);
 
-        } else if (response.equals("Finance Manager")) {
+        } else if (response.equals("4") || response.equals("Finance Manager")) {
             
-        } else if (response.equals("Loan Tracker")) {
+        } else if (response.equals("5") || response.equals("Loan Tracker")) {
             
+        } else if (response.equals("6") || response.equals("Exit") || response.equals("exit")) {
+            System.out.println("Thank you for coming today, have a good rest of your day!");
+            System.exit(0);
         } else {
             throw new IllegalArgumentException("Invalid user input. Please try again");
         }
+        scanner.close();
     }
 }
          */
