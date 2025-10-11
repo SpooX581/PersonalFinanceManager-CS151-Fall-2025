@@ -92,7 +92,20 @@ public class User {
         } else if (response.equals("Bank Account")) {
             
         } else if (response.equals("Credit Card")) {
-            
+            CreditCard creditCard = new CreditCard();
+
+            System.out.println("What credit card company do you have?");
+            String cardCompany = scanner.nextLine();
+            creditCard.setCreditCardName(cardCompany);
+
+            System.out.println("What is your credit card number?");
+            String cardNumber = scanner.nextLine();
+            creditCard.setCreditCardNumber(cardNumber);
+
+            System.out.println("What is your statement balance?");
+            double currentBalance = scanner.nextDouble();
+            creditCard.setStatementBalance(currentBalance);
+
         } else if (response.equals("Finance Manager")) {
             
         } else if (response.equals("Loan Tracker")) {
