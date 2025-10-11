@@ -61,12 +61,7 @@ public class BankAccount {
         }
         else{
             System.out.println("Amount requested has to be positive.");
-        }
-        
-    }
-
-    public static void main(String[] args) {
-       
+        }   
     }
 
 }
