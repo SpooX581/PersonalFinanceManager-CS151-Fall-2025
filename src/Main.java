@@ -1,7 +1,61 @@
+package src;
+
 import java.util.Scanner;
 
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
+
+    private static void clear() {
+        // function to clear the screen
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    private static void exit(String exit) {
+        // function to exit the program
+        if (exit.toLowerCase().equals("exit")) {
+            System.out.println("Thanks for using our Personal Finance Manager!");
+            System.exit(0);
+        }
+    }
+
+    private static void register(User user) {
+        // Function to prompt registration
+        System.out.println("Welcome to our Personal Finance Manager! Let's get you started.");
+        System.out.println("Create a new account");
+
+        System.out.println("Date of Birth in YYYY-MM-DD format:");
+        String dateofBirth = scanner.nextLine();
+        exit(dateofBirth);
+        System.out.println();
+
+        System.out.print("Full Name: ");
+        String name = scanner.nextLine();
+        exit(name);
+        System.out.println();
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+        exit(username);
+        System.out.println();
+
+        System.out.print("Create a new password: ");
+        String password = scanner.nextLine();
+        exit(password);
+        System.out.println();
+
+        String newUser = user.createUser(dateofBirth, name, username, password);
+        System.out.println("Thank you for registering!");
+
+    }
+
+
     public static void main(String[] args) {
+        User user = new User();
+        register(user);
+    }
+}
+        /*
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to our Personal Finance Manager! Let's get you started!");
         System.out.println("Please enter your full name: ");
@@ -54,3 +108,4 @@ public class Main {
         }
     }
 }
+         */
