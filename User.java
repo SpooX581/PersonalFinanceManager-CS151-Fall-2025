@@ -7,7 +7,7 @@ public class User {
     private int creditCards;
     private int bankAccounts;
 
-    public User () {
+    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
