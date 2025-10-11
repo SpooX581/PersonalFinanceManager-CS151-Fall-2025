@@ -1,4 +1,3 @@
-
 public class User {
     private String fullName;
     private String username;
@@ -7,9 +6,8 @@ public class User {
     private double networth;
     private int creditCards;
     private int bankAccounts;
-    private String idNumber;
 
-    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts, String idNumber) {
+    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -17,7 +15,6 @@ public class User {
         this.networth = networth;
         this.creditCards = creditCards;
         this.bankAccounts = bankAccounts;
-        this.idNumber = idNumber;
     }
     // getters
     public String getFullName(String fullName) {
@@ -41,9 +38,6 @@ public class User {
     public int getBankAccounts(int bankAccounts) {
         return bankAccounts;
     }
-    public String idNumber(String idNumber) {
-        return idNumber;
-    }
     // setters
     public void setUsername(String username) {
         this.username = username;
@@ -60,4 +54,5 @@ public class User {
     public void setBankAccounts(int bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
+
 }
