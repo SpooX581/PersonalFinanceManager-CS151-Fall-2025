@@ -72,6 +72,10 @@ public class CreditCard {
         this.creditCardName = creditCardName;
     }
 
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
+
     public void setStatementBalance(double statementBalance) {
         this.statementBalance = statementBalance;
     }
