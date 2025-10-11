@@ -12,11 +12,11 @@ public class ReportGenerator {
     
     // no arg default constructor
     public ReportGenerator() {
-        this.fullName = "";
-        this.accountNumber = "";
+        this.fullName = "N/A";
+        this.accountNumber = "N/A";
         this.totalMonthSpent = 0.0;
         this.totalMonthDeposit = 0.0;
-        this.totalMonthTransactions = "";
+        this.totalMonthTransactions = "N/A";
         this.totalMonthInterest = 0.0;
         this.totalMonthBalance = 0.0;
         this.totalMonthCashBack = 0.0;
@@ -68,7 +68,7 @@ public class ReportGenerator {
     public double getTotalMonthCashBack() {
         return totalMonthCashBack;
     }
-    
+
     public double getTotalMonthFees() {
         return totalMonthFees;
     }
