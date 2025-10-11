@@ -8,8 +8,9 @@ public class User {
     private double networth;
     private int creditCards;
     private int bankAccounts;
+    private String idNumber;
 
-    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts) {
+    public User (String fullName, String username, String password, String dateOfBirth, double networth, int creditCards, int bankAccounts, String idNumber) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -17,6 +18,7 @@ public class User {
         this.networth = networth;
         this.creditCards = creditCards;
         this.bankAccounts = bankAccounts;
+        this.idNumber = idNumber;
     }
     // getters
     public String getFullName(String fullName) {
@@ -40,6 +42,9 @@ public class User {
     public int getBankAccounts(int bankAccounts) {
         return bankAccounts;
     }
+    public String idNumber(String idNumber) {
+        return idNumber;
+    }
     // setters
     public void setUsername(String username) {
         this.username = username;
@@ -58,6 +63,7 @@ public class User {
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        // account creation
         System.out.println("Welcome to our Personal Finance Manager!");
         System.out.println("What is your full name? Please enter: ");
         String fullName = scanner.nextLine();
@@ -68,5 +74,31 @@ public class User {
         System.out.println("What is your date of birth? Please enter in MM/DD/YYYY format.");
         String dateOfBirth = scanner.nextLine();
         System.out.println("Account creation successful " + fullName + "! Remember to keep your information safe.");
+        System.out.println("Please create an ID number.");
+        String idNumber = scanner.nextLine();
+
+        // finance manager system menu
+        System.out.println("Welcome back, " + fullName + "!");
+        System.out.println("Please type the option you would like to access: ");
+        System.out.println("User Information");
+        System.out.println("Bank Account");
+        System.out.println("Credit Card");
+        System.out.println("Finance Manager");
+        System.out.println("Loan Tracker");
+
+        String response = scanner.nextLine();
+        if (response.equals("User Information")) {
+
+        } else if (response.equals("Bank Account")) {
+            
+        } else if (response.equals("Credit Card")) {
+            
+        } else if (response.equals("Finance Manager")) {
+            
+        } else if (response.equals("Loan Tracker")) {
+            
+        } else {
+            throw new IllegalArgumentException("Invalid user input. Please try again");
+        }
     }
 }
