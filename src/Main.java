@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Scanner;
 
 public class Main {
@@ -74,6 +76,7 @@ public class Main {
         while(!end) {
             do {
                 // Clear the screen before operation
+                clear();
                 menu();
                 String input = scanner.nextLine();
                 exit(input);
