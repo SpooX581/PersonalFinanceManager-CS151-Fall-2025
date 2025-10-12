@@ -130,7 +130,55 @@ public class Main {
                     }
 
                     case "3" -> {
-                        System.out.println();
+                        System.out.print("Enter credit card name: ");
+                        String creditCardName = scanner.nextLine();
+                        exit(creditCardName);
+
+                        System.out.println("Enter credit card number: ");
+                        String creditCardNumber = scanner.nextLine();
+                        exit(creditCardNumber);
+
+                        CreditCard creditCard = new CreditCard(creditCardName, creditCardNumber);
+
+                        creditCard.toString();
+
+                        System.out.println("Thanks for linking your card! Continue managing your credit card? (Y/N)");
+                        String answer = scanner.nextLine();
+                        exit(answer);
+                        if(!answer.equalsIgnoreCase("Y")) {
+                            System.out.println(" ");
+                        } else {
+                            creditCard.creditMenu();
+                            String manage = scanner.nextLine();
+
+                            switch(manage) {
+                                case "1" -> {
+                                    System.out.print("Enter purchase name: ");
+                                    String purchase = scanner.nextLine();
+                                    exit(purchase);
+                                    System.out.print("Enter purchase amount: ");
+                                    double amount = scanner.nextDouble();
+                                    creditCard.makingAPurchase(purchase, amount);
+                                }
+
+                                case "2" -> {
+                                    System.out.println("Enter payment amount: ");
+                                    double payment = scanner.nextDouble();
+                                    creditCard.creditCardPayment(payment);
+                                }
+
+                                case "3" -> {
+                                    creditCard.seePurchases();
+                                }
+
+                                case "4" -> {
+                                    creditCard.toString();
+                                }
+
+                                default -> System.out.println("Invalid.");
+                            }
+
+                        }
                     }
 
                     case "6" -> {

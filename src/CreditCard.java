@@ -15,13 +15,13 @@ public class CreditCard {
     private ArrayList<String> purchases = new ArrayList<>(); // storing purchases
 
     // no arg/default constructor with default values
-    public CreditCard() {
-      this.creditCardName = "Unknown";  
-      this.creditCardNumber = "0000 0000 0000 0000";
+    public CreditCard(String creditCardName, String creditCardNumber) {
+      this.creditCardName = creditCardName;
+      this.creditCardNumber = creditCardNumber;
       this.statementBalance = 0.0;
-      this.closingDate = 0;
+      this.closingDate = 20;
       this.cashBack = 0.0;
-      this.creditLimit = 0.0;
+      this.creditLimit = 5000.0;
       this.interestRate = 0.0;
       this.dueDate = 0;
       this.minimumPayment = 0;
@@ -183,5 +183,14 @@ public class CreditCard {
         "Due date: " + dueDate +"th" + "\n" +
         "Minimum payment: $" + String.format("%.2f", minimumPayment) + 
         "Purchase: " + purchases + "\n";
+    }
+
+    public void creditMenu() {
+        System.out.println();
+        System.out.println("Continue managing credit card");
+        System.out.println("1. Make a purchase");
+        System.out.println("2. Make a payment");
+        System.out.println("3. See purchases");
+        System.out.println("4. View all credit card information");
     }
 }
