@@ -82,6 +82,56 @@ public class Main {
                 System.out.println();
 
                 switch (input) {
+                    case "2" -> {
+                        System.out.println("Enter account number: ");
+                        String accountNum = scanner.nextLine();
+                        exit(accountNum);
+
+                        System.out.println("Enter account PIN: ");
+                        String PIN = scanner.nextLine();
+                        exit(PIN);
+
+                        System.out.println("Enter account balance: ");
+                        double balance = Double.parseDouble(scanner.nextLine());
+
+                        BankAccount bankAccount = new BankAccount(balance, PIN, accountNum);
+
+                        System.out.println("Thanks for linking your account! Continue managing your account? (Y/N)");
+                        String answer = scanner.nextLine();
+                        exit(answer);
+                        if(!answer.equalsIgnoreCase("Y")) {
+                            System.out.println(" ");
+                        } else {
+                            bankAccount.accountMenu();
+                            String manage = scanner.nextLine();
+
+                            switch(manage) {
+                                case "1" -> {
+                                    double withdraw = scanner.nextDouble();
+                                    bankAccount.withdraw(withdraw);
+                                }
+
+                                case "2" -> {
+                                    double deposit = scanner.nextDouble();
+                                    bankAccount.deposit(deposit);
+                                }
+
+                                case "3" -> {
+                                    double transfer = scanner.nextDouble();
+                                    bankAccount.transfer(transfer);
+                                }
+
+                                case "4" -> {
+                                    double request = scanner.nextDouble();
+                                    bankAccount.request(request);
+                                }
+
+                                default -> System.out.println("Invalid.");
+                            }
+
+                        }
+                    }
+
                     case "6" -> {
                         exit("exit");
                     }
