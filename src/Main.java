@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
+    private static String current = null;
 
     private static void exit(String exit) {
         // function to exit the program
@@ -11,7 +12,66 @@ public class Main {
         }
     }
 
-    private static void login(){}
+    private static void login(DataStorage dataStorage){
+        // function to prompt user to login
+        System.out.println("Welcome to our Personal Finance Manager!");
+        System.out.println("New user? Enter Y to create one.");
+
+        System.out.print("Enter your username: ");
+        String username = scanner.nextLine();
+        exit(username);
+
+        // call register in case of Y
+        if (username.equalsIgnoreCase("Y")) {
+            register(dataStorage);
+            return;
+        }
+
+        current = username;
+        System.out.println("Enter password: ");
+        String password = scanner.nextLine();
+        exit(password);
+
+        if(dataStorage.login(current, password)) {
+            System.out.println("You are now logged in!");
+            // move onto next function
+        } else {
+            System.out.println("Incorrect login.");
+            login(dataStorage);
+        }
+    }
+
+    private static void register(DataStorage dataStorage) {
+        // function for register prompts
+        System.out.println("Welcome to our Personal Finance Manager!");
+        System.out.println("Create your account");
+
+        System.out.print("Your full name: ");
+        String name = scanner.nextLine();
+        exit(name);
+
+        System.out.print("Your username: ");
+        String username = scanner.nextLine();
+        exit(username);
+
+        System.out.print("Your password: ");
+        String password = scanner.nextLine();
+        exit(password);
+        System.out.println();
+
+        String ID = dataStorage.create(name, username, password);
+
+        System.out.println("Thanks for registering!");
+        login(dataStorage);
+    }
+
+    public static void main(String[] args) {
+        DataStorage dataStorage = new DataStorage();
+        login(dataStorage);
+        User user = dataStorage.username(current);
+
+    }
+
 }
 /**
     private static void register(User user) {
