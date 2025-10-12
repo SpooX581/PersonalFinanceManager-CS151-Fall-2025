@@ -1,5 +1,3 @@
-package src;
-
 public class BankAccount {
     private double balance;
     private String accountNum;
