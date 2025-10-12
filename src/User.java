@@ -4,17 +4,21 @@ import java.time.format.DateTimeParseException;
 public class User {
     private String fullName = "default fullName";
     private String username = "default username";
+    private String ID = "default ID";
     private String password = "default password";
     private LocalDate dateOfBirth = LocalDate.of(1500, 1, 1);
     private double networth = 0.0;
     private int creditCards = 0;
     private int bankAccounts = 0;
 
-    public User() {
+    public User(String ID, String fullName, String password){
+        setID(ID);
+        setFullName(fullName);
+        setPassword(password);
+
     }
 
-    public User(String fullName, String username, String password, LocalDate dateOfBirth, double networth,
-            int creditCards, int bankAccounts) {
+    /*public User (String fullName, String username, String password, LocalDate dateOfBirth, double networth, int creditCards, int bankAccounts) {
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -22,7 +26,7 @@ public class User {
         this.networth = networth;
         this.creditCards = creditCards;
         this.bankAccounts = bankAccounts;
-    }
+    } */
 
     public void printUserInfo() {
         System.out.println("Full Name: " + fullName);
@@ -35,31 +39,28 @@ public class User {
     }
 
     // getters
-    public String getFullName(String fullName) {
+    public String getFullName() {
         return fullName;
     }
-
-    public String getUsername(String username) {
+    public String getUsername() {
         return username;
     }
-
-    public String getPassword(String password) {
+    public String getID() {
+        return ID;
+    }
+    public String getPassword() {
         return password;
     }
-
-    public LocalDate getDateOfBirth(LocalDate dateOfBirth) {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
-
-    public double getNetworth(double networth) {
+    public double getNetworth() {
         return networth;
     }
-
-    public int getCreditCards(int creditCards) {
+    public int getCreditCards() {
         return creditCards;
     }
-
-    public int getBankAccounts(int bankAccounts) {
+    public int getBankAccounts() {
         return bankAccounts;
     }
 
@@ -75,11 +76,10 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setID(String ID) {
+        this.ID = ID;
     }
-
+    public void setDateOfBirth(LocalDate dateOfBirth) {this.dateOfBirth = dateOfBirth;}
     public void setNetworth(double networth) {
         this.networth = networth;
     }
