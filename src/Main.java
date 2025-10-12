@@ -5,12 +5,6 @@ import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
-    private static void clear() {
-        // function to clear the screen
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     private static void exit(String exit) {
         // function to exit the program
         if (exit.toLowerCase().equals("exit")) {
@@ -75,9 +69,8 @@ public class Main {
 
         while(!end) {
             do {
-                // Clear the screen before operation
-                String input = scanner.nextLine();
                 menu();
+                String input = scanner.nextLine();
                 exit(input);
                 System.out.println();
 
@@ -107,21 +100,25 @@ public class Main {
 
                             switch(manage) {
                                 case "1" -> {
+                                    System.out.print("Enter withdrawal amount: ");
                                     double withdraw = scanner.nextDouble();
                                     bankAccount.withdraw(withdraw);
                                 }
 
                                 case "2" -> {
+                                    System.out.print("Enter deposit amount: ");
                                     double deposit = scanner.nextDouble();
                                     bankAccount.deposit(deposit);
                                 }
 
                                 case "3" -> {
+                                    System.out.println("Enter transfer amount: ");
                                     double transfer = scanner.nextDouble();
                                     bankAccount.transfer(transfer);
                                 }
 
                                 case "4" -> {
+                                    System.out.println("Enter request amount: ");
                                     double request = scanner.nextDouble();
                                     bankAccount.request(request);
                                 }
@@ -130,6 +127,10 @@ public class Main {
                             }
 
                         }
+                    }
+
+                    case "3" -> {
+                        System.out.println();
                     }
 
                     case "6" -> {
