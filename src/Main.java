@@ -5,12 +5,6 @@ import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
 
-    private static void clear() {
-        // function to clear the screen
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     private static void exit(String exit) {
         // function to exit the program
         if (exit.toLowerCase().equals("exit")) {
@@ -75,8 +69,6 @@ public class Main {
 
         while(!end) {
             do {
-                // Clear the screen before operation
-                clear();
                 menu();
                 String input = scanner.nextLine();
                 exit(input);
@@ -135,6 +127,10 @@ public class Main {
                             }
 
                         }
+                    }
+
+                    case "3" -> {
+                        System.out.println();
                     }
 
                     case "6" -> {

@@ -133,7 +133,7 @@ public class CreditCard {
 
     public void seeClosingDate(){
         closingDate = 20; // always on the 20th day of the month 
-        System.out.println("Your closing date is the" +closingDate+ "th day of every month.");
+        System.out.println("Your closing date is the " + closingDate + "th day of every month.");
     }
 
     public void seeCashBack() {
@@ -143,7 +143,7 @@ public class CreditCard {
     public void seeCreditLimit() {
         creditLimit = 5000.00; // set default credit limit 
         double calculatedCreditLimit = creditLimit - statementBalance;
-        System.out.println("Your total credit limit is $"+creditLimit+ " each month");
+        System.out.println("Your total credit limit is $"+ creditLimit + " each month");
         System.out.println("Your current credit limit: $" + String.format("%.2f", calculatedCreditLimit));
     }
 
@@ -162,7 +162,7 @@ public class CreditCard {
         if (dueDate > 28) { // 28 days in a month, so if greater than 28 days, due date will be at 28 (max day)
             dueDate = 28;
         }
-        System.out.println("Your credit card due date is: " +dueDate+"th");
+        System.out.println("Your credit card due date is: " + dueDate +"th");
     }
 
     public void minimumPayment() {
@@ -176,11 +176,11 @@ public class CreditCard {
         return "Credit card name: " + creditCardName + "\n" + 
         "Credit card number: " + creditCardNumber + "\n" +
         "Statement Balance: $" + String.format("%.2f", statementBalance) + "\n" +
-        "Closing Date: " +closingDate+"th" + "\n" +
+        "Closing Date: " + closingDate +"th" + "\n" +
         "Cashback: $" + String.format("%.2f", cashBack) + "\n" +
         "Credit Limit: $" + String.format("%.2f", creditLimit) + "\n" +
         "Interest Rate: " + (interestRate * 100) +"%" + "\n" +
-        "Due date: " +dueDate+"th" + "\n" + 
+        "Due date: " + dueDate +"th" + "\n" +
         "Minimum payment: $" + String.format("%.2f", minimumPayment) + 
         "Purchase: " + purchases + "\n";
     }
