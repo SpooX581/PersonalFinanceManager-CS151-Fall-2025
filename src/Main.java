@@ -51,7 +51,7 @@ public class Main {
     private static void menu() {
         System.out.println();
         System.out.println("Welcome to our Personal Finance Manager!");
-        System.out.println("1. User Information");
+        System.out.println("1. User Spending Survey");
         System.out.println("2. Bank Account");
         System.out.println("3. Credit Card");
         System.out.println("4. Finance Manager");
