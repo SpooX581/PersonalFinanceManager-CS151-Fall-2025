@@ -14,8 +14,8 @@ public class CreditCard {
 
     // no arg/default constructor with default values
     public CreditCard() {
-      this.creditCardName = "Unknown";  
-      this.creditCardNumber = "0000 0000 0000 0000";
+      this.creditCardName = "N/A";  
+      this.creditCardNumber = "N/A";
       this.statementBalance = 0.0;
       this.closingDate = 0;
       this.cashBack = 0.0;
