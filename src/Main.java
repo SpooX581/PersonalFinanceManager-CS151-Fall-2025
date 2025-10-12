@@ -22,9 +22,9 @@ public class Main {
     private static void register(User user) {
         // Function to prompt registration
         System.out.println("Welcome to our Personal Finance Manager! Let's get you started.");
-        System.out.println("Create a new account");
+        System.out.println("Please create a new account");
 
-        System.out.println("Date of Birth in YYYY-MM-DD format:");
+        System.out.print("Date of Birth in YYYY-MM-DD format: ");
         String dateofBirth = scanner.nextLine();
         exit(dateofBirth);
         System.out.println();
@@ -44,15 +44,57 @@ public class Main {
         exit(password);
         System.out.println();
 
-        String newUser = user.createUser(dateofBirth, name, username, password);
+        user.createUser(dateofBirth, name, username, password);
         System.out.println("Thank you for registering!");
 
     }
+    private static void menu() {
+        System.out.println();
+        System.out.println("Welcome to our Personal Finance Manager!");
+        System.out.println("1. User Information");
+        System.out.println("2. Bank Account");
+        System.out.println("3. Credit Card");
+        System.out.println("4. Finance Manager");
+        System.out.println("5. Loan Tracker");
+        System.out.println("6. Exit");
+        System.out.println("Enter \"exit\" into any prompt to close.");
+        System.out.println("Please type the option you would like to access: ");
 
+    }
 
     public static void main(String[] args) {
+
+
         User user = new User();
+
         register(user);
+
+        user.printUserInfo();
+
+        boolean end = false;
+
+        while(!end) {
+            do {
+                // Clear the screen before operation
+                String input = scanner.nextLine();
+                menu();
+                exit(input);
+                System.out.println();
+
+                switch (input) {
+                    case "6" -> {
+                        exit("exit");
+                    }
+
+
+                    // default for invalid input
+                    default -> System.out.println("Not an option, please select from the options above.");
+                }
+
+            } while (!end);
+
+            scanner.close();
+        }
     }
 }
         /*
@@ -73,19 +115,18 @@ public class Main {
         // finance manager system menu
         System.out.println("Welcome back, " + fullName + "!");
         System.out.println("Please type the option you would like to access: ");
-        System.out.println("1. User Information");
-        System.out.println("2. Bank Account");
-        System.out.println("3. Credit Card");
-        System.out.println("4. Finance Manager");
-        System.out.println("5. Loan Tracker");
-        System.out.println("6. Exit");
+        System.out.println("User Information");
+        System.out.println("Bank Account");
+        System.out.println("Credit Card");
+        System.out.println("Finance Manager");
+        System.out.println("Loan Tracker");
 
         String response = scanner.nextLine();
-        if (response.equals("1") ||response.equals("User Information")) {
+        if (response.equals("User Information")) {
 
-        } else if (response.equals("2") || response.equals("Bank Account")) {
-            
-        } else if (response.equals("3") || response.equals("Credit Card")) {
+        } else if (response.equals("Bank Account")) {
+
+        } else if (response.equals("Credit Card")) {
             CreditCard creditCard = new CreditCard();
 
             System.out.println("What credit card company do you have?");
@@ -100,17 +141,13 @@ public class Main {
             double currentBalance = scanner.nextDouble();
             creditCard.setStatementBalance(currentBalance);
 
-        } else if (response.equals("4") || response.equals("Finance Manager")) {
-            
-        } else if (response.equals("5") || response.equals("Loan Tracker")) {
-            
-        } else if (response.equals("6") || response.equals("Exit") || response.equals("exit")) {
-            System.out.println("Thank you for coming today, have a good rest of your day!");
-            System.exit(0);
+        } else if (response.equals("Finance Manager")) {
+
+        } else if (response.equals("Loan Tracker")) {
+
         } else {
             throw new IllegalArgumentException("Invalid user input. Please try again");
         }
-        scanner.close();
     }
 }
          */
