@@ -1,3 +1,5 @@
+package src;
+
 public class BankAccount {
     private double balance;
     private String accountNum;
@@ -58,6 +60,15 @@ public class BankAccount {
         } else {
             System.out.println("Amount requested has to be positive.");
         }
+    }
+
+    public void accountMenu() {
+        System.out.println();
+        System.out.println("Continue managing bank account");
+        System.out.println("1. withdraw");
+        System.out.println("2. deposit");
+        System.out.println("3. transfer");
+        System.out.println("4. request");
     }
 
 }

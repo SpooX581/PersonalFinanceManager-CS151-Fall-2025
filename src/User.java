@@ -24,13 +24,14 @@ public class User {
         this.bankAccounts = bankAccounts;
     }
 
-    // full name, username, password
-    // initialize with only full name, username, and password
-    public User(String fullName, String username, String password) {
-        setDateOfBirth(dateOfBirth);
-        setFullName(fullName);
-        setUsername(username);
-        setPassword(password);
+    public void printUserInfo() {
+        System.out.println("Full Name: " + fullName);
+        System.out.println("Username: " + username);
+        System.out.println("Password: " + password);
+        System.out.println("Date of Birth: " + dateOfBirth);
+        System.out.println("Networth: " + networth);
+        System.out.println("Credit Cards: " + creditCards);
+        System.out.println("Bank Accounts: " + bankAccounts);
     }
 
     // getters
@@ -91,16 +92,16 @@ public class User {
         this.bankAccounts = bankAccounts;
     }
 
-    public String createUser(String DOB, String fullName, String username, String password) {
-        User user = new User(fullName, username, password);
+    public void createUser(String DOB, String fullName, String username, String password) {
         try {
-            user.setDateOfBirth(LocalDate.parse(DOB));
+            this.fullName = fullName;
+            this.username = username;
+            this.password = password;
+            this.dateOfBirth = LocalDate.parse(DOB);
         } catch (DateTimeParseException e) {
             System.out.println("Error parsing date: " + e.getMessage());
         }
 
         System.out.println("Welcome, " + fullName + "! Your username is " + username);
-        return username;
     }
-
 }
