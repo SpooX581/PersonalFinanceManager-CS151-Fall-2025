@@ -1,5 +1,3 @@
-package src;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
@@ -8,7 +6,7 @@ public class User {
     private String username = "default username";
     private String ID = "default ID";
     private String password = "default password";
-    private LocalDate dateOfBirth = LocalDate.of(1500,1,1);
+    private LocalDate dateOfBirth = LocalDate.of(1500, 1, 1);
     private double networth = 0.0;
     private int creditCards = 0;
     private int bankAccounts = 0;
@@ -65,11 +63,16 @@ public class User {
     public int getBankAccounts() {
         return bankAccounts;
     }
+
     // setters
-    public void setFullName(String fullName) {this.fullName = fullName;}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -80,9 +83,11 @@ public class User {
     public void setNetworth(double networth) {
         this.networth = networth;
     }
+
     public void setCreditCards(int creditCards) {
         this.creditCards = creditCards;
     }
+
     public void setBankAccounts(int bankAccounts) {
         this.bankAccounts = bankAccounts;
     }
