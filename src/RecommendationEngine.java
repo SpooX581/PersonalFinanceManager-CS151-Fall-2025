@@ -88,4 +88,40 @@ public class RecommendationEngine {
     }
 
     // Bills to focus on and recommend allocation plan
+    public void billsFocusPlan() {
+        System.out.println("\n=== Bills to Prioritize ===");
+        if (monthlyBills.isEmpty()) {
+            System.out.println("No bills on file. Add bills to get a prioritized plan.");
+            return;
+        }
+
+        // Sorts through through earliest due day first, unknown last
+        List<Bill> ordered = monthlyBills.stream()
+                .sorted(Comparator.comparing(b -> b.dueDay == null ? Integer.MAX_VALUE : b.dueDay))
+                .collect(Collectors.toList());
+
+        double totalBills = ordered.stream().mapToDouble(b -> b.amount).sum();
+        System.out.printf("Total upcoming bills: $%.2f%n", totalBills);
+
+        System.out.println("Priority order (soonest due first):");
+        for (Bill b : ordered) {
+            String dueStr = (b.dueDay == null) ? "due: unknown" : ("due: " + b.dueDay);
+            System.out.printf("• %-18s  $%7.2f   (%s)%n", b.name, b.amount, dueStr);
+        }
+
+        // Suggest: allocate enough cash to cover earliest bills first.
+        System.out.println("\nSuggested allocation strategy:");
+        System.out.println("1) Cover all essentials (rent, utilities, minimum card payments) first.");
+        System.out.println(
+                "2) If short on cash, pay minimums on CCs and avoid interest by paying the card with nearest due date next.");
+        System.out.println("3) Keep a small buffer ($50-$150) for groceries/fuel before discretionary spend.");
+    }
+
+    // Convenience wrapper to run all three parts
+    public void runAll() {
+        spendingAlerts();
+        cashbackSummary();
+        billsFocusPlan();
+        System.out.println("\n(End of recommendations) \n");
+    }
 }

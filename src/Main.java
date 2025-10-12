@@ -40,6 +40,7 @@ public class Main {
         System.out.println("Thank you for registering!");
 
     }
+
     private static void menu() {
         System.out.println();
         System.out.println("Welcome to our Personal Finance Manager!");
@@ -56,7 +57,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         User user = new User();
 
         register(user);
@@ -65,7 +65,7 @@ public class Main {
 
         boolean end = false;
 
-        while(!end) {
+        while (!end) {
             do {
                 menu();
                 String input = scanner.nextLine();
@@ -90,13 +90,13 @@ public class Main {
                         System.out.println("Thanks for linking your account! Continue managing your account? (Y/N)");
                         String answer = scanner.nextLine();
                         exit(answer);
-                        if(!answer.equalsIgnoreCase("Y")) {
+                        if (!answer.equalsIgnoreCase("Y")) {
                             System.out.println(" ");
                         } else {
                             bankAccount.accountMenu();
                             String manage = scanner.nextLine();
 
-                            switch(manage) {
+                            switch (manage) {
                                 case "1" -> {
                                     System.out.print("Enter withdrawal amount: ");
                                     double withdraw = scanner.nextDouble();
@@ -141,13 +141,13 @@ public class Main {
                         System.out.println("Thanks for linking your card! Continue managing your credit card? (Y/N)");
                         String answer = scanner.nextLine();
                         exit(answer);
-                        if(!answer.equalsIgnoreCase("Y")) {
+                        if (!answer.equalsIgnoreCase("Y")) {
                             System.out.println(" ");
                         } else {
                             creditCard.creditMenu();
                             String manage = scanner.nextLine();
 
-                            switch(manage) {
+                            switch (manage) {
                                 case "1" -> {
                                     System.out.print("Enter purchase name: ");
                                     String purchase = scanner.nextLine();
@@ -180,7 +180,6 @@ public class Main {
                     case "6" -> {
                         exit("exit");
                     }
-
 
                     // default for invalid input
                     default -> System.out.println("Not an option, please select from the options above.");
