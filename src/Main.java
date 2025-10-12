@@ -57,7 +57,7 @@ public class Main {
         System.out.println("4. Finance Manager");
         System.out.println("5. Loan Tracker");
         System.out.println("6. Exit");
-        System.out.println("Enter \"exit\" for any prompt to close.");
+        System.out.println("Enter \"exit\" into any prompt to close.");
         System.out.println("Please type the option you would like to access: ");
 
     }
@@ -73,6 +73,28 @@ public class Main {
 
         boolean end = false;
 
+        while(!end) {
+            do {
+                // Clear the screen before operation
+                String input = scanner.nextLine();
+                menu();
+                exit(input);
+                System.out.println();
+
+                switch (input) {
+                    case "6" -> {
+                        exit("exit");
+                    }
+
+
+                    // default for invalid input
+                    default -> System.out.println("Not an option, please select from the options above.");
+                }
+
+            } while (!end);
+
+            scanner.close();
+        }
     }
 }
         /*
