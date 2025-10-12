@@ -1,61 +1,193 @@
 import java.util.Scanner;
 
 public class Main {
-     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to our Personal Finance Manager! Let's get you started!");
-        System.out.println("Please enter your full name: ");
-        String fullName = scanner.nextLine();
-        System.out.println("Please create a username: ");
-        String username = scanner.nextLine();
-        System.out.println("Please create a password: ");
-        String password = scanner.nextLine();
-        System.out.println("Please enter your date of birth in MM/DD/YYYY format: ");
-        String dateOfBirth = scanner.nextLine();
-        System.out.println("Account creation successful " + fullName + "! Remember to keep your information safe.");
-        System.out.println("Please create an ID number.");
-        String idNumber = scanner.nextLine();
+    private static Scanner scanner = new Scanner(System.in);
 
-        // finance manager system menu
-        System.out.println("Welcome back, " + fullName + "!");
-        System.out.println("Please type the option you would like to access: ");
+    private static void exit(String exit) {
+        // function to exit the program
+        if (exit.toLowerCase().equals("exit")) {
+            System.out.println("Thanks for using our Personal Finance Manager!");
+            System.exit(0);
+        }
+    }
+
+    private static void register(User user) {
+        // Function to prompt registration
+        System.out.println("Welcome to our Personal Finance Manager! Let's get you started.");
+        System.out.println("Please create a new account");
+
+        System.out.print("Date of Birth in YYYY-MM-DD format: ");
+        String dateofBirth = scanner.nextLine();
+        exit(dateofBirth);
+        System.out.println();
+
+        System.out.print("Full Name: ");
+        String name = scanner.nextLine();
+        exit(name);
+        System.out.println();
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+        exit(username);
+        System.out.println();
+
+        System.out.print("Create a new password: ");
+        String password = scanner.nextLine();
+        exit(password);
+        System.out.println();
+
+        user.createUser(dateofBirth, name, username, password);
+        System.out.println("Thank you for registering!");
+
+    }
+
+    private static void menu() {
+        System.out.println();
+        System.out.println("Welcome to our Personal Finance Manager!");
         System.out.println("1. User Information");
         System.out.println("2. Bank Account");
         System.out.println("3. Credit Card");
         System.out.println("4. Finance Manager");
         System.out.println("5. Loan Tracker");
         System.out.println("6. Exit");
+        System.out.println("Enter \"exit\" into any prompt to close.");
+        System.out.println("Please type the option you would like to access: ");
 
-        String response = scanner.nextLine();
-        if (response.equals("1") ||response.equals("User Information")) {
+    }
 
-        } else if (response.equals("2") || response.equals("Bank Account")) {
-            
-        } else if (response.equals("3") || response.equals("Credit Card")) {
-            CreditCard creditCard = new CreditCard();
+    public static void main(String[] args) {
 
-            System.out.println("What credit card company do you have?");
-            String cardCompany = scanner.nextLine();
-            creditCard.setCreditCardName(cardCompany);
+        User user = new User();
 
-            System.out.println("What is your credit card number?");
-            String cardNumber = scanner.nextLine();
-            creditCard.setCreditCardNumber(cardNumber);
+        register(user);
 
-            System.out.println("What is your statement balance?");
-            double currentBalance = scanner.nextDouble();
-            creditCard.setStatementBalance(currentBalance);
+        user.printUserInfo();
 
-        } else if (response.equals("4") || response.equals("Finance Manager")) {
-            
-        } else if (response.equals("5") || response.equals("Loan Tracker")) {
-            
-        } else if (response.equals("6") || response.equals("Exit") || response.equals("exit")) {
-            System.out.println("Thank you for coming today, have a good rest of your day!");
-            System.exit(0);
-        } else {
-            throw new IllegalArgumentException("Invalid user input. Please try again");
+        boolean end = false;
+
+        while (!end) {
+            do {
+                menu();
+                String input = scanner.nextLine();
+                exit(input);
+                System.out.println();
+
+                switch (input) {
+                    case "2" -> {
+                        System.out.println("Enter account number: ");
+                        String accountNum = scanner.nextLine();
+                        exit(accountNum);
+
+                        System.out.println("Enter account PIN: ");
+                        String PIN = scanner.nextLine();
+                        exit(PIN);
+
+                        System.out.println("Enter account balance: ");
+                        double balance = Double.parseDouble(scanner.nextLine());
+
+                        BankAccount bankAccount = new BankAccount(balance, PIN, accountNum);
+
+                        System.out.println("Thanks for linking your account! Continue managing your account? (Y/N)");
+                        String answer = scanner.nextLine();
+                        exit(answer);
+                        if (!answer.equalsIgnoreCase("Y")) {
+                            System.out.println(" ");
+                        } else {
+                            bankAccount.accountMenu();
+                            String manage = scanner.nextLine();
+
+                            switch (manage) {
+                                case "1" -> {
+                                    System.out.print("Enter withdrawal amount: ");
+                                    double withdraw = scanner.nextDouble();
+                                    bankAccount.withdraw(withdraw);
+                                }
+
+                                case "2" -> {
+                                    System.out.print("Enter deposit amount: ");
+                                    double deposit = scanner.nextDouble();
+                                    bankAccount.deposit(deposit);
+                                }
+
+                                case "3" -> {
+                                    System.out.println("Enter transfer amount: ");
+                                    double transfer = scanner.nextDouble();
+                                    bankAccount.transfer(transfer);
+                                }
+
+                                case "4" -> {
+                                    System.out.println("Enter request amount: ");
+                                    double request = scanner.nextDouble();
+                                    bankAccount.request(request);
+                                }
+
+                                default -> System.out.println("Invalid.");
+                            }
+
+                        }
+                    }
+
+                    case "3" -> {
+                        System.out.print("Enter credit card name: ");
+                        String creditCardName = scanner.nextLine();
+                        exit(creditCardName);
+
+                        System.out.println("Enter credit card number: ");
+                        String creditCardNumber = scanner.nextLine();
+                        exit(creditCardNumber);
+
+                        CreditCard creditCard = new CreditCard(creditCardName, creditCardNumber);
+
+                        System.out.println("Thanks for linking your card! Continue managing your credit card? (Y/N)");
+                        String answer = scanner.nextLine();
+                        exit(answer);
+                        if (!answer.equalsIgnoreCase("Y")) {
+                            System.out.println(" ");
+                        } else {
+                            creditCard.creditMenu();
+                            String manage = scanner.nextLine();
+
+                            switch (manage) {
+                                case "1" -> {
+                                    System.out.print("Enter purchase name: ");
+                                    String purchase = scanner.nextLine();
+                                    exit(purchase);
+                                    System.out.print("Enter purchase amount: ");
+                                    double amount = scanner.nextDouble();
+                                    creditCard.makingAPurchase(purchase, amount);
+                                }
+
+                                case "2" -> {
+                                    System.out.println("Enter payment amount: ");
+                                    double payment = scanner.nextDouble();
+                                    creditCard.creditCardPayment(payment);
+                                }
+
+                                case "3" -> {
+                                    creditCard.seePurchases();
+                                }
+
+                                case "4" -> {
+                                    creditCard.toString();
+                                }
+
+                                default -> System.out.println("Invalid.");
+                            }
+
+                        }
+                    }
+
+                    case "6" -> {
+                        exit("exit");
+                    }
+
+                    // default for invalid input
+                    default -> System.out.println("Not an option, please select from the options above.");
+                }
+
+            } while (!end);
+
+            scanner.close();
         }
-        scanner.close();
     }
 }
