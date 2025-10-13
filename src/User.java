@@ -113,4 +113,17 @@ public class User {
         }
         System.out.println("Welcome, " + fullName + "! Your username is " + username);
     }
+
+    // method for easier/faster printing for credit card
+    @Override
+    public String toString() {
+        return "User ID: " + userId + "\n" +
+                "Full Name: " + fullName + "\n" +
+                "Username: " + username + "\n" +
+                "Password: " + password + "\n" +
+                "Date of Birth: " + dateOfBirth + "\n" +
+                "Net worth: " + networth + "\n" +
+                "Credit cards: " + creditCards + "\n" +
+                "Bank accounts: " + bankAccounts + "\n";
+    }
 }
