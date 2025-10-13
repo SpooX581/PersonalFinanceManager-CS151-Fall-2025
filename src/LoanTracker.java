@@ -48,4 +48,10 @@ class LoanTracker {
         System.out.println("You have " + totalPayments + " payments remaining.");
     }
 
+    @Override
+    public String toString() {
+        return "Loan Name: " + loan + "\n" + "Loan Amount: $" + String.format("%.2f", amount) + "\n" + "Payment Amount: $" + String.format("%.2f", payment) + "\n" + "Total Payments: " + String.format("%.2f", totalPayments) + "\n";
+    }
+
+
 }
