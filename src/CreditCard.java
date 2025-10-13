@@ -14,6 +14,16 @@ public class CreditCard {
     private double minimumPayment;
     private ArrayList<String> purchases = new ArrayList<>(); // storing purchases
 
+    // Constructor with validation
+    public CreditCard(String name, double limit) throws InvalidCreditLimitException {
+        if (limit <= 0) {
+            throw new InvalidCreditLimitException("Credit limit must be greater than 0.");
+        }
+        this.creditCardName = name;
+        this.creditLimit = limit;
+        this.statementBalance = 0.0;
+    }
+
     // no arg/default constructor with default values
     public CreditCard(String creditCardName, String creditCardNumber) {
       this.creditCardName = creditCardName;
