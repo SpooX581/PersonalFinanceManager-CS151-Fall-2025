@@ -39,4 +39,18 @@ public abstract class AbstractCreditCard {
     public abstract void creditCardPayment(double paymentAmount);
     public abstract void dueDate();
     public abstract void minimumPayment();
+    // method for easier/faster printing for credit card
+    @Override
+    public String toString() {
+        return "Credit card name: " + creditCardName + "\n" +
+                "Credit card number: " + creditCardNumber + "\n" +
+                "Statement Balance: $" + String.format("%.2f", statementBalance) + "\n" +
+                "Closing Date: " + closingDate + "th" + "\n" +
+                "Cashback: $" + String.format("%.2f", cashBack) + "\n" +
+                "Credit Limit: $" + String.format("%.2f", creditLimit) + "\n" +
+                "Interest Rate: " + (interestRate * 100) + "%" + "\n" +
+                "Due date: " + dueDate + "th" + "\n" +
+                "Minimum payment: $" + String.format("%.2f", minimumPayment) +
+                "Purchase: " + purchases + "\n";
+    }
 }
