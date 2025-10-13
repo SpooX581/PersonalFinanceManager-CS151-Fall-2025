@@ -1,19 +1,24 @@
+import org.junit.Test;
+import static org.unit.Assert.*;
+
 public class BudgetPlannerTest {
-    public static void main(String[] args) {
+
+    @Test
+    public void testBelowBudget() {
         //Below budget
-        BudgetPlanner belowBudget = new BudgetPlanner(500,400);
-        planner1.manageBudget();
-        System.out.println();
-
-        //Exact budget
-        BudgetPlanner exactBudget = new BudgetPlanner(800,800);
-        planner2.manageBudget();
-        System.out.println();
-
-        //Over budget
-        BudgetPlanner overBudget = new BudgetPlanner(800,1200);
-        planner3.manageBudget();
+        BudgetPlanner belowBudget = new BudgetPlanner(500, 400);
+        assertTrue(belowBudget.getSpending() < belowBudget.getBudget());
     }
-
-    
+    @Test
+    public void testExactBudget() {
+        //Exact budget
+        BudgetPlanner exactBudget = new BudgetPlanner(800, 800);
+        assertEquals(exactBudget.getBudget(), exactBudget.getSpending(), 0.001);
+    }
+    @Test
+    public void testOverBudget() {
+        //Over budget
+        BudgetPlanner overBudget = new BudgetPlanner(800, 1200);
+        assertTrue(overBudget.getSpending() > overBudget.getBudget());
+    }
 }

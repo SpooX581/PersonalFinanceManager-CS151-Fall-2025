@@ -10,7 +10,7 @@ This project applies core Object-Oriented Programming (OOP) principles such as *
 
 ## Design
 
-<img src="./CS151Project1UML.png"></img>  
+<img src="./CS151Project1UMLNew.png"></img>  
 <em>UML Diagram of the Personal Finance Manager system pictured above</em>
 
 The design centers around the `User.java` and `FinanceManager.java` classes.  
