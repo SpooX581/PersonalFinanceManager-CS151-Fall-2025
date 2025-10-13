@@ -29,4 +29,20 @@ public class BudgetPlanner {
             System.out.println("You are over your budget limit this month by $"+(spending-budget)+".");
         }
     }
+
+    @Override
+    public String toString() {
+        String status;
+        if (spending < budget) {
+            status = "Within your budget";
+        } 
+        else if (spending == budget) {
+            status = "Exactly on budget";
+        } 
+        else {
+            status = "Over your budget";
+        }
+
+        return "Budget: $" + String.format("%.2f", budget) + "\n"+ "Spending: $" + String.format("%.2f", spending) + "\n" + "Status: " + status + "\n";
+    }
 }
