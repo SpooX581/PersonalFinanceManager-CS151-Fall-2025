@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class BankAccount {
+public class BankAccount implements ProfileInfoInterface {
     private double balance;
     private String accountNum;
     private String accountPin;
@@ -15,11 +15,12 @@ public class BankAccount {
         this.accountPin = accountPin;
     }
 
-    public double getBalance() {
+    public double getMoneyValue() {
         return balance;
     }
 
-    public String getAccountNum() {
+    @Override
+    public String getIdNumber() { 
         return accountNum;
     }
 

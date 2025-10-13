@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-public class User {
+public class User implements ProfileInfoInterface {
     private String userId = "UNSET"; // NEW: unique ID for login/linking
     private String fullName = "default fullName";
     private String username = "default username";
@@ -37,7 +37,8 @@ public class User {
     }
 
     // --- Correct (no-arg) getters
-    public String getUserId() {
+    @Override
+    public String getIdNumber() {
         return userId;
     }
 
@@ -57,7 +58,8 @@ public class User {
         return dateOfBirth;
     }
 
-    public double getNetworth() {
+    @Override
+    public double getMoneyValue() {
         return networth;
     }
 
