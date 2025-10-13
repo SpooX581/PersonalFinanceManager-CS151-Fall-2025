@@ -15,8 +15,8 @@ public class FinanceManager {
 
     // Setup
     public void loadUserAccounts() {
-        Map<String, BankAccount> bankAccounts = dataStorage.getBankAccounts(user.getUserId());
-        Map<String, CreditCard> cards = dataStorage.getCreditCards(user.getUserId());
+        Map<String, BankAccount> bankAccounts = dataStorage.getBankAccounts(user.getIdNumber());
+        Map<String, CreditCard> cards = dataStorage.getCreditCards(user.getIdNumber());
 
         transactions.clear();
         for (BankAccount b : bankAccounts.values()) {
@@ -35,15 +35,15 @@ public class FinanceManager {
     public void showUserSummary() {
         user.printUserInfo();
         System.out.println("\nBank Accounts:");
-        Map<String, BankAccount> myBanks = dataStorage.getBankAccounts(user.getUserId());
+        Map<String, BankAccount> myBanks = dataStorage.getBankAccounts(user.getIdNumber());
         if (myBanks.isEmpty())
             System.out.println("  (none)");
         else
             myBanks.values().forEach(a -> System.out.printf("  %s | Balance: $%.2f (Txns: %d)%n",
-                    a.getAccountNum(), a.getBalance(), a.getTransactions().size()));
+                    a.getIdNumber(), a.getMoneyValue(), a.getTransactions().size()));
 
         System.out.println("\nCredit Cards:");
-        Map<String, CreditCard> myCards = dataStorage.getCreditCards(user.getUserId());
+        Map<String, CreditCard> myCards = dataStorage.getCreditCards(user.getIdNumber());
         if (myCards.isEmpty())
             System.out.println("  (none)");
         else
