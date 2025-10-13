@@ -23,4 +23,10 @@ public class DataStorage {
     public Map<String, CreditCard> getCreditCards(String userId) {
         return creditCardsByUser.getOrDefault(userId, Collections.emptyMap());
     }
+
+    @Override
+    public String toString() {
+        return "DataStorage:\n" +"Total Users with Bank Accounts: " + bankAccountsByUser.size() + "\n" + "Total Users with Credit Cards: " + creditCardsByUser.size() + "\n";
+    }
+
 }
