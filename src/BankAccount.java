@@ -82,4 +82,12 @@ public class BankAccount {
         System.out.println("3. transfer");
         System.out.println("4. request");
     }
+
+    @Override
+    public String toString() {
+        return "Account Number: " + accountNum + "\n" +
+               "Account PIN: " + accountPin + "\n" +
+               "Balance: $" + String.format("%.2f", balance) + "\n" +
+               "Number of Transactions: " + transactions.size() + "\n";
+    }
 }
