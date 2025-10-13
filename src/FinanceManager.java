@@ -116,7 +116,7 @@ public class FinanceManager {
 
         ArrayList<Double> cashBack = new ArrayList<>();
         cashBack.add(totalSpent * 0.03);
-        rg.calculateTotalMonthBalance(cashBack);
+        rg.calculateTotalMonthCashBack(cashBack);
 
         System.out.println("\n=== Monthly Report ===");
         System.out.println(rg);
