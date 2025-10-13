@@ -8,7 +8,7 @@ public class DataStorage {
 
     public void addBankAccount(String userId, BankAccount account) {
         bankAccountsByUser.computeIfAbsent(userId, k -> new HashMap<>())
-                .put(account.getAccountNum(), account);
+                .put(account.getIdNumber(), account);
     }
 
     public void addCreditCard(String userId, CreditCard card) {

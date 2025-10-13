@@ -14,6 +14,7 @@ public class CreditCard extends AbstractCreditCard {
 
     // Constructor with validation
     public CreditCard(String name, double limit) throws InvalidCreditLimitException {
+        super(name, "");
         if (limit <= 0) {
             throw new InvalidCreditLimitException("Credit limit must be greater than 0.");
         }
@@ -110,14 +111,14 @@ public class CreditCard extends AbstractCreditCard {
         System.out.println("Checking credit card balance: $" +  String.format("%.2f", statementBalance));
     }
 
-    public void makingAPurchase(String purchase, double amount)
-            throws NegativeAmountException, ExceededCreditLimitException {
-
+    public void makingAPurchase(String purchase,double amount)
+            throws NegativeAmountException, ExceedCreditLimitException {
+    
         if (amount < 0) {
             throw new NegativeAmountException("Purchase amount cannot be negative.");
         }
         if (statementBalance + amount > creditLimit) {
-            throw new ExceededCreditLimitException(
+            throw new ExceedCreditLimitException(
                     "Purchase denied: exceeds credit limit of $" + creditLimit);
         }
 
