@@ -1,6 +1,3 @@
-// RecommendationEngineTest.java
-// JUnit 4 + Mockito
-
 import org.junit.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
