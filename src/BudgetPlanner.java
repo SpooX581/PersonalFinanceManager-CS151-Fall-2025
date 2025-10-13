@@ -7,6 +7,14 @@ public class BudgetPlanner {
         this.spending = spending;
     }
 
+    public double getBudget(){
+        return budget;
+    }
+
+    public double getSpending(){
+        return spending;
+    }
+        
     public void manageBudget(){
         System.out.println("Your budget is $" +budget+".");
         System.out.println("Your spending amount this month is $" +spending+".");
