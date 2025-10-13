@@ -110,6 +110,14 @@ public class FinanceManager {
         rg.calculateTotalMonthSpent(spent);
         rg.calculateTotalMonthTransactions(txStrs);
 
+        ArrayList<Double> totalBalance = new ArrayList<>();
+        totalBalance.add(totalSpent);
+        rg.calculateTotalMonthBalance(totalBalance);
+
+        ArrayList<Double> cashBack = new ArrayList<>();
+        cashBack.add(totalSpent * 0.03);
+        rg.calculateTotalMonthBalance(cashBack);
+
         System.out.println("\n=== Monthly Report ===");
         System.out.println(rg);
     }
