@@ -1,27 +1,28 @@
 import org.junit.Test;
-import static org.unit.Assert.*;
+import static org.junit.Assert.*;
 
 public class BankAccountTest {
-  
+
     @Test
-    public void testGetters(){
-        BankAccount test = new BankAccount(500,"17172" , "192112");
-        //Balance
-        assertEquals(500,test.getBalance(),0.001);
-        //AccountNum
+    public void testGetters() {
+        BankAccount test = new BankAccount(500, "17172", "192112");
+        // Balance
+        assertEquals(500, test.getBalance(), 0.001);
+        // AccountNum
         assertEquals("17172", test.getAccountNum());
-        //AccountPin
+        // AccountPin
         assertEquals("192112", test.getAccountPin());
     }
+
     @Test
     public void testRequest() {
         BankAccount test = new BankAccount(500, "17172", "192112");
 
-        //Positive
+        // Positive
         test.request(200);
         assertEquals(500, test.getBalance(), 0.001);
 
-        //Nonpositive
+        // Nonpositive
         test.request(0);
         assertEquals(500, test.getBalance(), 0.001);
     }
@@ -40,7 +41,7 @@ public class BankAccountTest {
         withdrawEqual.withdraw(500);
         assertEquals(0, withdrawEqual.getBalance(), 0.001);
 
-        // Amount greater than balance 
+        // Amount greater than balance
         withdrawGreater.withdraw(600);
         assertEquals(500, withdrawGreater.getBalance(), 0.001);
     }
@@ -50,7 +51,7 @@ public class BankAccountTest {
         BankAccount depositPositive = new BankAccount(500, "171233", "19322138");
         BankAccount depositNonPositive = new BankAccount(500, "1723474", "92335412");
 
-        // Amount not positive 
+        // Amount not positive
         depositNonPositive.deposit(0);
         assertEquals(500, depositNonPositive.getBalance(), 0.001);
 
@@ -58,6 +59,7 @@ public class BankAccountTest {
         depositPositive.deposit(60);
         assertEquals(560, depositPositive.getBalance(), 0.001);
     }
+
     @Test
     public void testTransfer() {
         BankAccount transferNonPositive = new BankAccount(500, "173254173", "1932138");
@@ -75,5 +77,5 @@ public class BankAccountTest {
         // Transfer positive number greater than balance
         transferPositiveGreaterThan.transfer(600);
         assertEquals(500, transferPositiveGreaterThan.getBalance(), 0.001);
-    } 
+    }
 }
