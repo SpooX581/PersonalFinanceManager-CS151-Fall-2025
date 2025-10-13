@@ -2,31 +2,30 @@ public class BudgetPlanner {
     private double budget;
     private double spending;
 
-    public BudgetPlanner(double budget, double spending){
-        this.budget= budget;
+    public BudgetPlanner(double budget, double spending) {
+        this.budget = budget;
         this.spending = spending;
     }
 
-    public double getBudget(){
+    public double getBudget() {
         return budget;
     }
 
-    public double getSpending(){
+    public double getSpending() {
         return spending;
     }
-        
-    public void manageBudget(){
-        System.out.println("Your budget is $" +budget+".");
-        System.out.println("Your spending amount this month is $" +spending+".");
 
-        if(spending<budget){
-            System.out.println("You have stayed within your budget this month. You have $"+(budget-spending)+" left over for yourself.");
-        }
-        else if(spending==budget){
+    public void manageBudget() {
+        System.out.println("Your budget is $" + budget + ".");
+        System.out.println("Your spending amount this month is $" + spending + ".");
+
+        if (spending < budget) {
+            System.out.println("You have stayed within your budget this month. You have $" + (budget - spending)
+                    + " left over for yourself.");
+        } else if (spending == budget) {
             System.out.println("You have reached your budget limit this month. You have $0 left over for yourself.");
-        }
-        else{
-            System.out.println("You are over your budget limit this month by $"+(spending-budget)+".");
+        } else {
+            System.out.println("You are over your budget limit this month by $" + (spending - budget) + ".");
         }
     }
 
@@ -35,14 +34,13 @@ public class BudgetPlanner {
         String status;
         if (spending < budget) {
             status = "Within your budget";
-        } 
-        else if (spending == budget) {
+        } else if (spending == budget) {
             status = "Exactly on budget";
-        } 
-        else {
+        } else {
             status = "Over your budget";
         }
 
-        return "Budget: $" + String.format("%.2f", budget) + "\n"+ "Spending: $" + String.format("%.2f", spending) + "\n" + "Status: " + status + "\n";
+        return "Budget: $" + String.format("%.2f", budget) + "\n" + "Spending: $" + String.format("%.2f", spending)
+                + "\n" + "Status: " + status + "\n";
     }
 }
