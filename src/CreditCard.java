@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class CreditCard {
+public class CreditCard extends AbstractCreditCard {
     private String creditCardName;
     private String creditCardNumber;
     private double statementBalance;
@@ -14,8 +14,7 @@ public class CreditCard {
 
     // no arg/default constructor with default values
     public CreditCard(String creditCardName, String creditCardNumber) {
-        this.creditCardName = creditCardName;
-        this.creditCardNumber = creditCardNumber;
+        super(creditCardName, creditCardNumber);
         this.statementBalance = 0.0;
         this.closingDate = 20;
         this.cashBack = 0.0;
@@ -28,8 +27,7 @@ public class CreditCard {
     // arg constructor
     public CreditCard(String creditCardName, String creditCardNumber, double statementBalance, int closingDate,
             double cashBack, double creditLimit, double interestRate, int dueDate, double minimumPayment) {
-        this.creditCardName = creditCardName;
-        this.creditCardNumber = creditCardNumber;
+        super(creditCardName, creditCardNumber);
         this.statementBalance = statementBalance;
         this.closingDate = closingDate;
         this.cashBack = cashBack;
