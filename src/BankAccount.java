@@ -1,9 +1,13 @@
-package src;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BankAccount {
     private double balance;
     private String accountNum;
     private String accountPin;
+
+    // New: holds transactions that we load from txt
+    private final List<Transaction> transactions = new ArrayList<>();
 
     public BankAccount(double balance, String accountNum, String accountPin) {
         this.balance = balance;
@@ -22,6 +26,14 @@ public class BankAccount {
     public String getAccountPin() {
         return accountPin;
     }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    } // NEW
+
+    public void addTransaction(Transaction t) {
+        transactions.add(t);
+    } // NEW
 
     public void withdraw(double amount) {
         if (amount <= balance) {
@@ -44,7 +56,7 @@ public class BankAccount {
     public void transfer(double amount) {
         if (amount > 0) {
             if (balance >= amount) {
-                balance = balance - amount;
+                balance -= amount;
                 System.out.println("Transfer complete.");
             } else {
                 System.out.println("Transfer declined. Insufficient funds.");
@@ -70,5 +82,4 @@ public class BankAccount {
         System.out.println("3. transfer");
         System.out.println("4. request");
     }
-
 }

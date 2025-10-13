@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
 public class User {
+    private String userId = "UNSET"; // NEW: unique ID for login/linking
     private String fullName = "default fullName";
     private String username = "default username";
     private String password = "default password";
@@ -13,8 +14,9 @@ public class User {
     public User() {
     }
 
-    public User(String fullName, String username, String password, LocalDate dateOfBirth, double networth,
-            int creditCards, int bankAccounts) {
+    public User(String userId, String fullName, String username, String password,
+            LocalDate dateOfBirth, double networth, int creditCards, int bankAccounts) {
+        this.userId = userId;
         this.fullName = fullName;
         this.username = username;
         this.password = password;
@@ -25,45 +27,53 @@ public class User {
     }
 
     public void printUserInfo() {
+        System.out.println("User ID: " + userId);
         System.out.println("Full Name: " + fullName);
         System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
         System.out.println("Date of Birth: " + dateOfBirth);
         System.out.println("Networth: " + networth);
         System.out.println("Credit Cards: " + creditCards);
         System.out.println("Bank Accounts: " + bankAccounts);
     }
 
-    // getters
-    public String getFullName(String fullName) {
+    // --- Correct (no-arg) getters
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getFullName() {
         return fullName;
     }
 
-    public String getUsername(String username) {
+    public String getUsername() {
         return username;
     }
 
-    public String getPassword(String password) {
+    public String getPassword() {
         return password;
     }
 
-    public LocalDate getDateOfBirth(LocalDate dateOfBirth) {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public double getNetworth(double networth) {
+    public double getNetworth() {
         return networth;
     }
 
-    public int getCreditCards(int creditCards) {
+    public int getCreditCards() {
         return creditCards;
     }
 
-    public int getBankAccounts(int bankAccounts) {
+    public int getBankAccounts() {
         return bankAccounts;
     }
 
     // setters
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -101,7 +111,6 @@ public class User {
         } catch (DateTimeParseException e) {
             System.out.println("Error parsing date: " + e.getMessage());
         }
-
         System.out.println("Welcome, " + fullName + "! Your username is " + username);
     }
 }

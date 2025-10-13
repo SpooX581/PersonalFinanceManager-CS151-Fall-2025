@@ -11,6 +11,9 @@ public class Main {
         }
     }
 
+    private static void login(){}
+}
+/**
     private static void register(User user) {
         // Function to prompt registration
         System.out.println("Welcome to our Personal Finance Manager! Let's get you started.");
@@ -190,4 +193,4 @@ public class Main {
             scanner.close();
         }
     }
-}
+} **/

@@ -1,14 +1,26 @@
-import java.util.HashMap;
+import java.util.*;
 
-public class DataStorage{
-    private HashMap<String,BankAccount> accounts = new HashMap<>();
+public class DataStorage {
+    // userId -> their bank account(s) by accountNum
+    private final Map<String, Map<String, BankAccount>> bankAccountsByUser = new HashMap<>();
+    // userId -> their credit cards by cardNumber
+    private final Map<String, Map<String, CreditCard>> creditCardsByUser = new HashMap<>();
 
-    public void addAccount(BankAccount account){
-        accounts.put(account.getAccountNum(), account);
+    public void addBankAccount(String userId, BankAccount account) {
+        bankAccountsByUser.computeIfAbsent(userId, k -> new HashMap<>())
+                .put(account.getAccountNum(), account);
     }
 
-    public BankAccount getAccount(String accountNum){
-        return accounts.get(accountNum);
+    public void addCreditCard(String userId, CreditCard card) {
+        creditCardsByUser.computeIfAbsent(userId, k -> new HashMap<>())
+                .put(card.getCreditCardNumber(), card);
     }
-    
+
+    public Map<String, BankAccount> getBankAccounts(String userId) {
+        return bankAccountsByUser.getOrDefault(userId, Collections.emptyMap());
+    }
+
+    public Map<String, CreditCard> getCreditCards(String userId) {
+        return creditCardsByUser.getOrDefault(userId, Collections.emptyMap());
+    }
 }
