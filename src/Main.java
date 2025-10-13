@@ -2,27 +2,104 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
+    private static String current = null;
 
     private static void pause() {
         System.out.println("\nPress ENTER to continue...");
         scanner.nextLine();
     }
 
-    private static double askDouble(String prompt) {
-        while (true) {
-            System.out.print(prompt);
-            String s = scanner.nextLine();
-            if (s.equalsIgnoreCase("exit")) {
-                System.out.println("Thanks for using our Personal Finance Manager!");
-                System.exit(0);
-            }
-            try {
-                return Double.parseDouble(s);
-            } catch (NumberFormatException nfe) {
-                System.out.println("Please enter a number.");
-            }
+    private static void login(DataStorage dataStorage){
+        // function to prompt user to login
+        System.out.println("Welcome to our Personal Finance Manager!");
+        System.out.println("New user? Enter Y to create one.");
+
+        System.out.print("Enter your username: ");
+        String username = scanner.nextLine();
+        exit(username);
+
+        // call register in case of Y
+        if (username.equalsIgnoreCase("Y")) {
+            register(dataStorage);
+            return;
         }
+
+        current = username;
+        System.out.println("Enter password: ");
+        String password = scanner.nextLine();
+        exit(password);
+
+        if(dataStorage.login(current, password)) {
+            System.out.println("You are now logged in!");
+            // move onto next function
+        } else {
+            System.out.println("Incorrect login.");
+            login(dataStorage);
+        }
+    }
+
+    private static void register(DataStorage dataStorage) {
+        // function for register prompts
+        System.out.println("Welcome to our Personal Finance Manager!");
+        System.out.println("Create your account");
+
+        System.out.print("Your full name: ");
+        String name = scanner.nextLine();
+        exit(name);
+
+        System.out.print("Your username: ");
+        String username = scanner.nextLine();
+        exit(username);
+
+        System.out.print("Your password: ");
+        String password = scanner.nextLine();
+        exit(password);
+        System.out.println();
+
+        String ID = dataStorage.create(name, username, password);
+
+        System.out.println("Thanks for registering!");
+        login(dataStorage);
+    }
+
+    public static void main(String[] args) {
+        DataStorage dataStorage = new DataStorage();
+        login(dataStorage);
+        User user = dataStorage.username(current);
+
+    }
+
+}
+/**
+    private static void register(User user) {
+        // Function to prompt registration
+        System.out.println("Welcome to our Personal Finance Manager! Let's get you started.");
+        System.out.println("Please create a new account");
+
+        System.out.print("Date of Birth in YYYY-MM-DD format: ");
+        String dateofBirth = scanner.nextLine();
+        exit(dateofBirth);
+        System.out.println();
+
+        System.out.print("Full Name: ");
+        String name = scanner.nextLine();
+        exit(name);
+        System.out.println();
+
+        System.out.print("Username: ");
+        String username = scanner.nextLine();
+        exit(username);
+        System.out.println();
+
+        System.out.print("Create a new password: ");
+        String password = scanner.nextLine();
+        exit(password);
+        System.out.println();
+
+        user.createUser(dateofBirth, name, username, password);
+        System.out.println("Thank you for registering!");
+
     }
 
     private static AuthService.AuthResult handleAuth() {

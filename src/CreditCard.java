@@ -12,6 +12,16 @@ public class CreditCard extends AbstractCreditCard {
     private double minimumPayment;
     private ArrayList<String> purchases = new ArrayList<>(); // storing purchases
 
+    // Constructor with validation
+    public CreditCard(String name, double limit) throws InvalidCreditLimitException {
+        if (limit <= 0) {
+            throw new InvalidCreditLimitException("Credit limit must be greater than 0.");
+        }
+        this.creditCardName = name;
+        this.creditLimit = limit;
+        this.statementBalance = 0.0;
+    }
+
     // no arg/default constructor with default values
     public CreditCard(String creditCardName, String creditCardNumber) {
         super(creditCardName, creditCardNumber);
@@ -97,21 +107,27 @@ public class CreditCard extends AbstractCreditCard {
     }
 
     public void seeStatementBalance() {
-        System.out.println("Checking credit card balance: $" + String.format("%.2f", statementBalance));
+        System.out.println("Checking credit card balance: $" +  String.format("%.2f", statementBalance));
     }
 
-    public void makingAPurchase(String purchase, double amount) {
-        if (amount > 0) {
-            statementBalance += amount;
-            purchases.add(purchase + ": $" + String.format("%.2f", amount)); // adding purchase to ArrayList purchases
-            // cashback from purchase
-            double cashBackRate = 0.03; // 3% cashback
-            double cashBackEarned = amount * cashBackRate;
-            cashBack += cashBackEarned;
-            System.out.println("You earned $" + String.format("%.2f", cashBackEarned) + " cashback on this purchase.");
-        } else {
-            throw new IllegalArgumentException("Invalid purchase. Please try again.");
+    public void makingAPurchase(String purchase, double amount)
+            throws NegativeAmountException, ExceededCreditLimitException {
+
+        if (amount < 0) {
+            throw new NegativeAmountException("Purchase amount cannot be negative.");
         }
+        if (statementBalance + amount > creditLimit) {
+            throw new ExceededCreditLimitException(
+                    "Purchase denied: exceeds credit limit of $" + creditLimit);
+        }
+
+        statementBalance += amount;
+        purchases.add(purchase + ": $" + String.format("%.2f", amount)); // adding purchase to ArrayList purchases
+        // cashback from purchase
+        double cashBackRate = 0.03; // 3% cashback
+        double cashBackEarned = amount * cashBackRate;
+        cashBack += cashBackEarned;
+        System.out.println("You earned $" + String.format("%.2f", cashBackEarned) + " cashback on this purchase.");
     }
 
     public void creditCardPayment(double paymentAmount) {
