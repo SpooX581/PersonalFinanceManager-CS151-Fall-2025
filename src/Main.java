@@ -93,8 +93,8 @@ public class Main {
         user.printUserInfo();
 
         // 2) Prepare demo DB for this user in resources/ and load it
-        FileDb.writeSampleBankDb(user.getUserId());
-        FileDb.writeSampleCreditDb(user.getUserId());
+        FileDb.writeSampleBankDb(user.getIdNumber());
+        FileDb.writeSampleCreditDb(user.getIdNumber());
 
         DataStorage store = new DataStorage();
         FileDb.loadAllInto(store);
@@ -159,3 +159,4 @@ public class Main {
             }
         }
     }
+}

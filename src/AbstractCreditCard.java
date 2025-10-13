@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public abstract class AbstractCreditCard {
     protected String creditCardName;
     protected String creditCardNumber;
@@ -22,7 +23,7 @@ public abstract class AbstractCreditCard {
         this.dueDate = 0;
         this.minimumPayment = 0;
     }
-    
+
     public String getCreditCardName() {
         return creditCardName;
     }
@@ -35,11 +36,16 @@ public abstract class AbstractCreditCard {
         return statementBalance;
     }
 
-    public abstract void makingAPurchase(String purchase, double amount);
+    // Align throws with subclass (checked exceptions)
+    public abstract void makingAPurchase(String purchase, double amount)
+            throws NegativeAmountException, ExceedCreditLimitException;
+
     public abstract void creditCardPayment(double paymentAmount);
+
     public abstract void dueDate();
+
     public abstract void minimumPayment();
-    // method for easier/faster printing for credit card
+
     @Override
     public String toString() {
         return "Credit card name: " + creditCardName + "\n" +
