@@ -55,15 +55,14 @@ public class FileDb {
 
                 # Purchases: USER_ID,CARD_NUMBER,DATE,AMOUNT,MERCHANT,DESC,CATEGORY
                 PURCHASE,%s,5555-6666-7777-8888,2025-10-04,52.35,Target,House items,SHOPPING
-                PURCHASE,%s,5555-6666-7777-8888,2025-10-06,18.75,Chipotle,Lunch,DINING
+                PURCHASE,%s,5555-6666-7777-8888,2025-10-06,18.75,Chipotle,Lunch,DI
                 """.formatted(userId, userId, userId);
 
         Files.writeString(creditPath(), content);
     }
 
     /**
-     * Load both DB files from resources/ into the given store (no changes needed
-     * elsewhere).
+     * Load both DB files from resources/ into the given store.
      */
     public static void loadAllInto(DataStorage store) throws IOException {
         if (Files.exists(bankPath())) {
@@ -96,14 +95,13 @@ public class FileDb {
                 accountUserMap.put(acctNum, userId);
             } else if (parts[0].equalsIgnoreCase("TXN")) {
                 // TXN,USER_ID,ACCOUNT_NUM,DATE,TYPE,AMOUNT,SOURCE,DESC,CATEGORY
-                String userId = parts[1];
                 String acctNum = parts[2];
                 String date = parts[3];
                 String type = parts[4];
                 double amount = Double.parseDouble(parts[5]);
                 String source = parts[6];
                 String desc = parts[7];
-                String cat = (parts.length > 8 ? parts[8] : "OTHER");
+                // String cat = (parts.length > 8 ? parts[8] : "OTHER");
 
                 Transaction t = new Transaction(type, amount, source, desc, date);
                 BankAccount acct = tempAccounts.get(acctNum);
@@ -144,13 +142,14 @@ public class FileDb {
 
                 CreditCard card = new CreditCard(name, number);
                 card.setStatementBalance(0.0);
-                // (Optional) add setters for limit/closing/apr if you want to reflect file
-                // values
+                // If you later add setters for limit/closing/apr, set them here:
+                // card.setCreditLimit(limit); card.setClosingDate(closing);
+                // card.setInterestRate(apr);
+
                 tempCards.put(number, card);
                 cardUserMap.put(number, userId);
             } else if (parts[0].equalsIgnoreCase("PURCHASE")) {
                 // PURCHASE,USER_ID,CARD_NUMBER,DATE,AMOUNT,MERCHANT,DESC,CATEGORY
-                String userId = parts[1];
                 String number = parts[2];
                 String date = parts[3];
                 double amount = Double.parseDouble(parts[4]);
@@ -158,7 +157,12 @@ public class FileDb {
                 String desc = parts[6];
                 CreditCard card = tempCards.get(number);
                 if (card != null) {
-                    card.makingAPurchase(merch + " - " + desc + " (" + date + ")", amount);
+                    try {
+                        card.makingAPurchase(merch + " - " + desc + " (" + date + ")", amount);
+                    } catch (NegativeAmountException | ExceedCreditLimitException e) {
+                        // Optionally log/skip bad purchase line
+                        // System.out.println("Skipping purchase: " + e.getMessage());
+                    }
                 }
             }
         }

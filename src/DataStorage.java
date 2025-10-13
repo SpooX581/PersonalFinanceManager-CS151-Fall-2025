@@ -26,7 +26,8 @@ public class DataStorage {
 
     @Override
     public String toString() {
-        return "DataStorage:\n" +"Total Users with Bank Accounts: " + bankAccountsByUser.size() + "\n" + "Total Users with Credit Cards: " + creditCardsByUser.size() + "\n";
+        return "DataStorage:\n" +
+                "Total Users with Bank Accounts: " + bankAccountsByUser.size() + "\n" +
+                "Total Users with Credit Cards: " + creditCardsByUser.size() + "\n";
     }
-
 }
