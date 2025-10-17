@@ -75,7 +75,20 @@ public class Main {
                     if (username.equalsIgnoreCase("exit"))
                         System.exit(0);
                     System.out.print("Password: ");
-                    String password = scanner.nextLine();
+                    String password = scanner.next();
+                    boolean validPassword = false;
+                    while (!validPassword) {
+                        if (password.length() < 6) {
+                            System.out.print("Password must be at least 6 characters long. Please enter again: ");
+                            password = scanner.nextLine();
+                            validPassword = true;
+                        } else if (password.chars().noneMatch(Character::isDigit)) {
+                            System.out.print("Password must contain at least one number. Please enter again: ");
+                            password = scanner.nextLine();
+                        } else {
+                            validPassword = true;
+                        }
+                    }
                     if (password.equalsIgnoreCase("exit"))
                         System.exit(0);
                     System.out.print("Date of Birth (YYYY-MM-DD): ");
