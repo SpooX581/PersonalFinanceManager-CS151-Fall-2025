@@ -85,7 +85,11 @@ public class Main {
                         } else if (password.chars().noneMatch(Character::isDigit)) {
                             System.out.print("Password must contain at least one number. Please enter again: ");
                             password = scanner.nextLine();
+                        } else if (password.chars().noneMatch(Character::isUpperCase)) {
+                            System.out.print("Password must contain at least one Upper case character. Please enter again: ");
+                            password = scanner.nextLine();
                         } else {
+                            System.out.println("Valid password accpeted.");
                             validPassword = true;
                         }
                     }
