@@ -80,9 +80,17 @@ public class Main {
                         System.exit(0);
                     System.out.print("Date of Birth (YYYY-MM-DD): ");
                     String dob = scanner.nextLine();
+                    boolean validDate = false;
+                    while (!validDate) {
+                        if (dob.isEmpty()){
+                            System.out.print("Date of birth cannot be empty. Please enter again: ");
+                            dob = scanner.nextLine();
+                        } else {
+                            validDate = true;
+                        }
+                    }
                     if (dob.equalsIgnoreCase("exit"))
                         System.exit(0);
-
                     var res = AuthService.register(name, username, password, dob);
                     System.out.println(res.message);
                     if (res.success)
