@@ -9,6 +9,17 @@ public class Main {
         scanner.nextLine();
     }
 
+    private static boolean isValidName(String name) {
+
+        for (char c : name.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     private static double askDouble(String prompt) {
         while (true) {
             System.out.print(prompt);
@@ -43,8 +54,20 @@ public class Main {
             }
             switch (choice) {
                 case "1" -> {
-                    System.out.print("Full Name: ");
+                    System.out.print("Full Name Test: ");
                     String name = scanner.nextLine();
+                    boolean validName = false;
+                    while (!validName) {
+                        if (name.isEmpty()){
+                            System.out.print("Full Name cannot be empty. Please enter again: ");
+                            name = scanner.nextLine();
+                        } else if (!isValidName(name)) {
+                            System.out.print("Full Name cannot contain numbers. Please enter again: ");
+                            name = scanner.nextLine();
+                        } else {
+                            validName = true;
+                        }
+                    }
                     if (name.equalsIgnoreCase("exit"))
                         System.exit(0);
                     System.out.print("Username: ");

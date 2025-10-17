@@ -1,3 +1,7 @@
 # USER_ID,USERNAME,PASSWORD,FULL_NAME,DOB
 9a6316de-ed38-42d2-bf4d-a9f8236871c2,Zhong2,1234,Telvin Zhong,2000-12-01
 49fcff8d-4aa0-4733-a08a-f4e9de273937,Zhong,1234,Wilfredo,2000-11-01
+d1f0b60f-94c9-4737-8692-7dc34321c20b,KPB,123,Kaelen Pe Benito,12341212
+d25dbfd9-fd30-44b0-8a44-569b77c5f2e7,qwe123,qwe123,Kaelen123,qwe123
+ea15882b-7a5f-44de-bf3e-bc25395ef194,123,123,Kaelen123,123
+d2184fa4-2f1d-486c-aef6-38424d9525ba,Kaelen,alkwndad,Kaelen Pe Benito,11 11 11 11
